@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upfiles Dashboard</title>
+    <!-- tailwind css -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+    <!-- google ofnts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <!-- material -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"/>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#4A24E3",
+              secondary: "#4312EC",
+              info: "#2B3674",
+              light: "#A3AED0",
+              custom: "#E3DAFF",
+              calender: "#4318FF",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      * {
+        font-family: "DM Sans", serif;
+      }
+      .gradient {
+        background: linear-gradient(135deg, #868cff 0%, #4318ff 100%);
+      }
+      .upload-card {
+        background-image: url("./assets/img/graduation.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      .profile-banner {
+        background-image: url("./assets/img/background.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+/* meida query  */
+    
+      @media (max-width: 768px) {
+        .sidebar-collapsed {
+          width: 0;
+          overflow: hidden;
+        }
+
+        .sidebar-expanded {
+          width: 100%;
+          max-width: 256px;
+        }
+      }
+
+      aside {
+        transition: all 0.3s ease-in-out;
+      }
+
+      .mobile-menu-overlay {
+        background: rgba(0, 0, 0, 0.5);
+        transition: opacity 0.3s ease-in-out;
+      }
+    </style>
+  </head>
+  <body class="">
+    <!-- Mobile Navigation -->
+    <nav
+      class="md:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-primary text-white p-4"
+    >
+      <div class="flex items-center space-x-4">
+        <span class="font-bold text-xl">Upfiles</span>
+        <button class="mobile-menu-button">
+          <i class="fas fa-bars w-6 h-6"></i>
+        </button>
+      </div>
+      <div class="flex items-center space-x-4">
+        <i class="fas fa-search"></i>
+        <i class="far fa-bell"></i>
+        <div class="flex items-center space-x-2">
+          <img
+            src="/assets/img/image.png"
+            alt="Profile"
+            class="w-8 h-8 rounded-full"
+          />
+          <div class="">
+            <span class="text-sm text-light">Mouni Roy</span>
+            <span class="text-xs block text-light">Admin</span>
+          </div>
+          <i
+            class="fas fa-chevron-down text-light text-xs border rounded-full p-1"
+          ></i>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div
+      class="mobile-menu-overlay fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden"
+    ></div>
+
+    <div class="flex min-h-screen pt-[60px] md:pt-0">
+      <!-- Sidebar -->
+      <aside
+        class="fixed md:relative hidden md:flex flex-col bg-primary text-white w-64  md:w-[149px] lg:w-64 min-h-screen transition-all duration-300 z-50 md:z-0"
+      >
+        <div class="p-6">
+          <h1
+            class="head text-2xl text-center font-bold "
+          >
+            Upfiles
+          </h1>
+
+        </div>
+
+        <nav class="flex-1 ">
+          <h6 class="text-xs p-3 opacity-60 lg:block  sm:justify-center">MAIN MENU</h6>
+          <div class="space-y-2 sm:p-5">
+            <a
+              href="#"
+              class="flex items-center md:justify-center lg:justify-start space-x-3 text-white p-3 bg-white/10 "
+            >
+              <svg 
+                xmlns="http://www.w3.org/2000/svg"
+                height="20px"
+                viewBox="0 -960 960 960"
+                width="20px"
+                fill="#e8eaed"
+              >
+                <path
+                  d="M528-624v-192h288v192H528ZM144-432v-384h288v384H144Zm384 288v-384h288v384H528Zm-384 0v-192h288v192H144Zm72-360h144v-240H216v240Zm384 288h144v-240H600v240Zm0-479h144v-49H600v49ZM216-216h144v-48H216v48Z"
+                />
+              </svg>
+              <span class="md:hidden lg:inline">Dashboard</span>
+            </a>
+            <a
+              href="#"
+              class="flex items-center md:justify-center lg:justify-start space-x-3 text-white p-3"
+            >
+              <i class="fas fa-calendar-day"></i>
+              <span class="md:hidden lg:inline">Tasks</span>
+            </a>
+            <a
+              href="#"
+              class="flex items-center md:justify-center lg:justify-start space-x-3 text-white p-3"
+            >
+              <i class="fas fa-users"></i>
+              <span class="md:hidden lg:inline">Friends</span>
+            </a>
+            <a
+              href="#"
+              class="flex items-center md:justify-center lg:justify-start space-x-3 text-white p-3"
+            >
+              <i class="fas fa-folder"></i>
+              <span class="md:hidden lg:inline">Files</span>
+            </a>
+          </div>
+
+          <h6 class="text-xs p-3 mt-6 opacity-60 lg:block  sm:justify-center">OTHERS</h6>
+          <div class="space-y-2">
+            <a
+              href="#"
+              class="flex items-center md:justify-center lg:justify-start space-x-3 text-white p-3"
+            >
+              <i class="fas fa-headset"></i>
+              <span class="md:hidden lg:inline">Support</span>
+            </a>
+            <a
+              href="#"
+              class="flex items-center md:justify-center lg:justify-start space-x-3 text-white p-3"
+            >
+              <i class="fas fa-cog"></i>
+              <span class="md:hidden lg:inline">Settings</span>
+            </a>
+          </div>
+        </nav>
+
+        <div class="p-4">
+          <div class="gradient p-4 rounded-xl text-center text-white">
+            <div
+              class="bg-white/20 rounded-full w-12 h-12 mx-auto mb-4 flex items-center justify-center"
+            >
+              <div class="bg-white/50 rounded-full w-8 h-8"></div>
+            </div>
+            <h2 class="text-lg font-bold mb-2">Upgrade to PRO</h2>
+<p class="text-xs text-[#E9EDF7]" style="line-height: 18px;">to get access to all features! Connect with Venus World!</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="flex-1 overflow-x-hidden">
+        <!-- Header (desktop and tablet) -->
+        <header
+          class="hidden md:flex justify-between items-center p-4 lg:p-6 bg-white"
+        >
+          <div class="relative w-full max-w-sm">
+            <i
+              class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+            ></i>
+            <input
+              type="text"
+              placeholder="Search"
+              class="w-full pl-10 pr-4 py-2 rounded-full bg-gray-100 border focus:ring-2 focus:ring-primary/50 outline-none"
+            />
+          </div>
+
+          <div class="flex items-center space-x-6">
+            <i class="far fa-bell text-gray-600"></i>
+            <div class="flex items-center space-x-2">
+              <div
+                class="w-[40px] h-[27px] bg-gray-200 rounded-lg overflow-hidden"
+              >
+                <img
+                  src="/assets/img/flag.png"
+                  alt="Flag"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <span class="text-sm text-[#646464] flex items-center">
+                English
+                <i class="fas fa-chevron-down ml-1 text-xs"></i>
+              </span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <img
+                src="/assets/img/image.png"
+                alt="Profile"
+                class="w-8 h-8 rounded-full"
+              />
+              <div>
+                <span class="text-sm text-[#404040]">Mouni Roy</span>
+                <span class="text-xs block text-[#565656]">Admin</span>
+              </div>
+              <i
+                class="fas fa-chevron-down text-xs border rounded-full p-1"
+              ></i>
+            </div>
+          </div>
+        </header>
+
+        <!-- Content  -->
+        <div class="p-4 lg:p-6">
+          <div class="mb-6 hidden lg:block">
+            <h6 class="text-sm text-[#707EAE]">Pages/NFT Marketplace</h6>
+            <h1 class="text-3xl font-bold text-info">Cloud Upload</h1>
+          </div>
+
+          <!-- gird-->
+          <div
+            class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 pb-3"
+          >
+            <div
+              class="bg-white p-4 rounded-xl border-2 lg:border-none shadow-sm lg:shadow-none"
+            >
+              <div class="flex items-center space-x-3">
+                <div class="bg-[#F4F7FE] text-primary p-4 rounded-full">
+                  <svg
+                    style="color: #4318ff"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#4318ff"
+                  >
+                    <path
+                      d="M200-160v-240h120v240H200Zm240 0v-440h120v440H440Zm240 0v-640h120v640H680Z"
+                    />
+                  </svg>
+                </div>
+
+                <div>
+                  <div class="text-sm text-light">Earnings</div>
+                  <div class="text-2xl font-bold text-info">$350.4</div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="bg-white p-4 rounded-xl border-2 lg:border-none shadow-sm lg:shadow-none"
+            >
+              <div class="flex items-center space-x-3">
+                <div>
+                  <div class="text-sm text-light">Sales</div>
+                  <div class="text-2xl font-bold text-info">$574.34</div>
+                  <div class="text-sm">
+                    <span class="text-[#05CD99]">+23%</span>
+                    <span class="text-light ml-1">since last month</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="bg-white p-4 rounded-xl border-2 lg:border-none shadow-sm lg:shadow-none"
+            >
+              <div class="flex items-center space-x-3 text-2xl">
+                <div
+                  class="bg-gradient-to-r from-[#4481EB] to-[#04BEFE] p-4 rounded-full flex items-center justify-center"
+                >
+                  <i class="fa-regular fa-circle-check text-white"></i>
+                </div>
+
+                <div>
+                  <div class="text-sm text-light">Uploaded Files</div>
+                  <div class="text-2xl font-bold text-info">154</div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="bg-white p-4 rounded-xl border-2 lg:border-none shadow-sm lg:shadow-none"
+            >
+              <div class="flex items-center space-x-3">
+                <div
+                  class="bg-[#F4F7FE] p-4 rounded-full flex items-center justify-center w-14 h-14"
+                >
+                  <i class="fa-solid fa-file text-[#4318FF] text-xl"></i>
+                </div>
+
+                <div>
+                  <div class="text-sm text-light">Total Files</div>
+                  <div class="text-2xl font-bold text-info">2935</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Upload and Calendar Section-->
+          <div class="grid grid-cols-1 lg:grid-cols-[2fr,1fr] gap-6 mb-6">
+            <!-- Upload card  -->
+            <div class="upload-card text-white rounded-xl p-6">
+              <h2
+                class="text-2xl md:text-3xl font-bold mb-2 text-center lg:text-left"
+              >
+                Upload your files and<br class="hidden md:block" />Run it Up.
+              </h2>
+              <p class="text-custom mb-8 text-center lg:text-left">
+                From 0 to 1 million users with Discovery tools for<br
+                  class="hidden md:block"
+                />faster NFTs or your existing one cool.
+              </p>
+              <div
+                class="border-2 border-dashed border-white/30 rounded-lg p-8 text-center w-full md:w-3/4 lg:w-1/2 mx-auto lg:mx-0"
+              >
+                <i class="fas fa-cloud-upload-alt text-3xl mb-2"></i>
+                <p>Click or drag file to this area to upload</p>
+              </div>
+            </div>
+
+            <!-- Calendar  -->
+
+            <div class="bg-white rounded-xl border-2 p-6 shadow-sm">
+              <div class="flex items-center justify-center space-x-4 mb-6">
+                <button
+                  class="bg-[#F4F7FE] text-[#4318FF] font-semibold py-2 px-4 rounded-full"
+                >
+                  April
+                  <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                </button>
+                <button
+                  class="text-gray-700 font-semibold py-2 px-4 rounded-full"
+                >
+                  2024
+                  <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                </button>
+              </div>
+
+              <div class="grid grid-cols-7 gap-2 text-center text-sm">
+                <div class="text-info font-bold">Mo</div>
+                <div class="text-info font-bold">Tu</div>
+                <div class="text-info font-bold">We</div>
+                <div class="text-info font-bold">Th</div>
+                <div class="text-info font-bold">Fr</div>
+                <div class="text-info font-bold">Sa</div>
+                <div class="text-info font-bold">Su</div>
+
+              
+                <div class="text-light p-2">29</div>
+                <div class="text-light p-2">30</div>
+                <div class="text-light p-2">31</div>
+                <div
+                  class="p-2 bg-gray-100 text-center rounded-full w-12 h-12 flex items-center justify-center"
+                >
+                  1
+                </div>
+                <div class="p-2">2</div>
+                <div class="p-2">3</div>
+                <div class="p-2">4</div>
+                <div class="p-2">5</div>
+                <div class="p-2">6</div>
+                <div class="p-2">7</div>
+                <div class="p-2">8</div>
+                <div class="p-2">9</div>
+                <div class="p-2">10</div>
+                <div class="p-2">11</div>
+                <div class="p-2">12</div>
+                <div class="p-2">13</div>
+                <div class="p-2">14</div>
+                <div class="p-2">15</div>
+                <div class="p-2">16</div>
+                <div class="p-2">17</div>
+                <div class="p-2">18</div>
+                <div class="p-2">19</div>
+                <div class="p-2">20</div>
+                <div class="p-2">21</div>
+                <div class="p-2">22</div>
+                <div class="p-2">23</div>
+                <div class="p-2">24</div>
+                <div class="p-2">25</div>
+                <div class="p-2">26</div>
+                <div
+                  class="bg-calender text-white text-center rounded-full w-12 h-12 flex items-center justify-center"
+                >
+                  27
+                </div>
+                <div class="p-2 text-calendar">28</div>
+                <div class="p-2 text-calendar">29</div>
+                <div
+                  class="bg-calender text-white text-center rounded-full w-12 h-12 flex items-center justify-center"
+                >
+                  30
+                </div>
+                <div class="text-light p-2">1</div>
+                <div class="text-light p-2">2</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile Banner -->
+          <div class="mt-6 border-2 p-3 rounded-xl">
+            <div class="profile-banner h-24 md:h-32 rounded-xl"></div>
+            <div
+              class="bg-white rounded-b-xl shadow-sm relative px-4 md:px-6 pb-6"
+            >
+              <img
+                src="/assets/img/image.png"
+                alt="Profile"
+                class="absolute -top-10 md:-top-12 left-1/2 -translate-x-1/2 w-20 md:w-24 h-20 md:h-24 rounded-full border-4 border-white"
+              />
+              <div class="pt-14 md:pt-16 text-center">
+                <h2 class="text-lg md:text-xl font-bold text-info">
+                  Adela Parkson
+                </h2>
+                <p class="text-light">Level 3 Contributor</p>
+
+                <div class="flex flex-wrap justify-center gap-4 md:gap-8 mt-4">
+                  <div class="flex flex-col items-center">
+                    <p class="text-2xl font-bold text-info">17</p>
+                    <p class="text-light">Files</p>
+                  </div>
+
+                  <div class="flex flex-col items-center">
+                    <p class="text-2xl font-bold text-info">9.7k</p>
+                    <p class="text-light">Sales</p>
+                  </div>
+
+                  <div class="flex flex-col items-center">
+                    <p class="text-2xl font-bold text-info">274</p>
+                    <p class="text-light">Followers</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      const menuButton = document.querySelector(".mobile-menu-button");
+      const sidebar = document.querySelector("aside");
+      const overlay = document.querySelector(".mobile-menu-overlay");
+      let isOpen = false;
+
+      function toggleMenu() {
+        isOpen = !isOpen;
+
+        if (isOpen) {
+          sidebar.classList.remove("hidden");
+          overlay.classList.remove("hidden");
+          document.body.style.overflow = "hidden";
+        } else {
+          sidebar.classList.add("hidden");
+          overlay.classList.add("hidden");
+          document.body.style.overflow = "auto";
+        }
+      }
+
+      menuButton.addEventListener("click", toggleMenu);
+      overlay.addEventListener("click", toggleMenu);
+
+      // Responsive sidebar for tablet
+      function handleResize() {
+        if (window.innerWidth >= 768 && window.innerWidth < 1024) {
+          sidebar.classList.add("sidebar-icon-only");
+        } else {
+          sidebar.classList.remove("sidebar-icon-only");
+        }
+      }
+
+      window.addEventListener("resize", handleResize);
+      handleResize(); // Initial check
+    </script>
+  </body>
+</html>
